@@ -160,7 +160,7 @@ PLUGIN_PACKAGES += mattermost-plugin-msteams-v2.0.3
 PLUGIN_PACKAGES += mattermost-plugin-user-survey-v1.1.1
 PLUGIN_PACKAGES += mattermost-plugin-mscalendar-v1.3.4
 PLUGIN_PACKAGES += mattermost-plugin-msteams-meetings-v2.2.0
-PLUGIN_PACKAGES += mattermost-plugin-metrics-v0.5.1
+PLUGIN_PACKAGES += mattermost-plugin-metrics-v0.5.3
 
 EE_PACKAGES=$(shell $(GO) list $(BUILD_ENTERPRISE_DIR)/...)
 
@@ -422,7 +422,7 @@ test-compile: gotestsum ## Compile tests.
 		$(GO) test $(GOFLAGS) -c $$package; \
 	done
 
-modules-tidy:
+modules-tidy: ## Tidy Go modules
 	mv enterprise/external_imports.go enterprise/external_imports.go.orig
 	-$(GO) mod tidy
 	-cd public && $(GO) mod tidy
